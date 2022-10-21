@@ -136,13 +136,15 @@ function checkBox(board, row, col) {
 }
 
 function solveBoard(board) {
+	// await sleep(100);
 	let empty = findEmpty(board);
 	if (!empty) return true;
 	let row = empty[0];
 	let col = empty[1];
 	for (let i = 1; i < 10; i++) {
-		board[row][col] = i;
+		document.getElementById(`${row}-${col}`).classList.add("active");
 		document.getElementById(`${row}-${col}`).value = i;
+		board[row][col] = i;
 		if (checkValid(board, row, col)) {
 			if (solveBoard(board)) {
 				return true;
@@ -151,6 +153,10 @@ function solveBoard(board) {
 		board[row][col] = 0;
 	}
 	return false;
+}
+
+function sleep(ms = 100) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function findEmpty(board) {

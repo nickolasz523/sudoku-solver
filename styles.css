@@ -92,6 +92,9 @@ input[type="number"] {
 .starting {
 	background-color: #a2b9a7;
 }
+.active {
+	border-color: #01f034;
+}
 
 .bottom-border {
 	border-bottom: 1px solid black;

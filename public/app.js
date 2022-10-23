@@ -4,8 +4,6 @@ const numSquares = 81;
 const solve = document.getElementById("solve");
 const generateBtn = document.getElementById("generate");
 
-let mykey = config.API_KEY;
-
 function createBoard(board) {
 	boardDiv.innerHTML = "";
 	for (let i = 0; i < 9; i++) {
@@ -54,6 +52,7 @@ solveBtn.addEventListener("click", () => {
 		}
 		boardArray.push(row);
 	}
+	console.log(boardArray);
 	solveBoard(boardArray);
 });
 
@@ -66,14 +65,12 @@ generateBtn.addEventListener("click", () => {
 	xhr.addEventListener("readystatechange", function () {
 		if (this.readyState === this.DONE) {
 			generated = JSON.parse(this.responseText).puzzle;
+			console.log(generated);
 			createBoard(makeBoard(generated));
+			console.log(makeBoard(generated));
 		}
 	});
-
-	xhr.open("GET", "https://sudoku-generator1.p.rapidapi.com/sudoku/generate");
-	xhr.setRequestHeader("X-RapidAPI-Key", mykey);
-	xhr.setRequestHeader("X-RapidAPI-Host", "sudoku-generator1.p.rapidapi.com");
-
+	xhr.open("GET", "/board");
 	xhr.send(data);
 });
 
@@ -155,9 +152,9 @@ function solveBoard(board) {
 	return false;
 }
 
-function sleep(ms = 100) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function sleep(ms = 100) {
+// 	return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
 function findEmpty(board) {
 	for (let i = 0; i < board.length; i++) {

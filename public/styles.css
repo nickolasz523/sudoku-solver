@@ -4,7 +4,7 @@
 }
 
 body {
-	height: 100%;
+	height: 95vh;
 	width: 100;
 }
 
@@ -22,7 +22,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: fit-content;
+	height: auto;
 }
 #board {
 	height: 36vw;
@@ -30,6 +30,7 @@ body {
 	margin-bottom: 10px;
 	box-shadow: 1px 1px 5px 1px #000;
 }
+
 
 .square {
 	color: black;
@@ -55,12 +56,13 @@ input[type="number"] {
 	-moz-appearance: textfield;
 }
 
+
 #container {
 	display: inline-block;
 }
 
 #container button {
-	font-size: large;
+	font-size: 1rem;
 	color: black;
 	background-color: white;
 	border: 0;
@@ -107,4 +109,21 @@ input[type="number"] {
 
 .right-border {
 	border-right: 3px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+	#board {
+	  width: 72vw;
+	  height: 72vw;
+	}
+	.square{
+		width: 8vw;
+		height: 8vw;
+	}
+
+	#container button{
+		width: 23.6vw;
+		height: 8vw;
+	}
+
 }
